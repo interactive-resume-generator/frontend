@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Home() {
+export default function ResumeForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');

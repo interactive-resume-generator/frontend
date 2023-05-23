@@ -1,4 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+
+export default function Form() {
+  // Component code here
+}
 
 export default function Home() {
   const [name, setName] = useState('');

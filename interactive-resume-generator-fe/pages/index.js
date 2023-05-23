@@ -47,19 +47,12 @@
 //
 // export default index;
 
-import React from 'react'
-import Hero from "@/components/Hero";
-import ScrollSection from "@/components/ScrollSection";
-import Footer from "@/components/Footer";
+import React from 'react';
+import Hero from '@/components/Hero';
+import Footer from '@/components/Footer';
 
 function Home() {
-    return (
-        <>
-        <Hero/>
-        <ScrollSection/>
-        <Footer/>
-        </>
-            )
+  // Your component code here
 }
 
-export default Home
+export default Home;

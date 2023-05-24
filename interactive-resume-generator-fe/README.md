@@ -59,3 +59,9 @@ GSAP
 ```
 $ npm i gsap
 ```
+
+Flowbite-React
+```
+$ npm install flowbite flowbite-react --save
+```
+

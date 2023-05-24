@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import Portfolio from "@/components/Portfolio";
-import ResumeForm from "@/components/ResumeForm";
+import Nav from "@/components/Nav";
+
 
 function Home() {
+    const [education, setEducation] = useState([]);
+    const [experience, setExperience] = useState([]);
+    const [skills, setSkills] = useState([]);
+
     return (
         <>
-        <ResumeForm/>
+        <Nav
+            setEducation={setEducation}
+            setExperience={setExperience}
+            setSkills={setSkills}
+        />
         <Hero/>
-        {/*<ScrollSection/>*/}
-        <Portfolio/>
+        <Portfolio
+            education={education}
+            experience={experience}
+            skills={skills}
+        />
         <Footer/>
         </>
             )

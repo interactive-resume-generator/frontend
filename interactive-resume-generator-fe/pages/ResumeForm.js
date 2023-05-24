@@ -45,15 +45,17 @@ export default function ResumeForm() {
     const resume = new FormData();
     const data = {
       "name": name,
-      "email": name,
-      "phone": name,
-      "education": name,
-      "experience": name,
-      "skills": name
+      "email": email,
+      "phone": phone,
+      "education": education,
+      "experience": experience,
+      "skills": skills
     };
+
     resume.append('name', "Ethan's Resume")
     resume.append('data', JSON.stringify(data))
     resume.append('format', JSON.stringify({"things":"stuff"}))
+
     const response = await fetch('http://localhost:8000/api/v1/resumes/create/', {
         method: 'POST',
         header: {'Content-Type': "multipart/form-data"},
@@ -67,11 +69,11 @@ export default function ResumeForm() {
       <h1 class="block mb-2 text-4xl font-medium text-white dark:text-white">Resume Generator</h1>
       <form onSubmit={handleSubmit}>
         <div className='mb-6'>
-          <label for='name' htmlFor="name" class="block mb-2 text-sm font-medium text-white dark:text-white">Full Name:</label>
+          <label htmlFor="name" class="block mb-2 text-sm font-medium text-white dark:text-white">Full Name:</label>
           <input type='text' id='name' class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={name} onChange={(e) => setName(e.target.value)} required />
-          <label for="email" class="block mb-2 text-sm font-medium text-white dark:text-white" htmlFor="email">Email Address:</label>
+          <label class="block mb-2 text-sm font-medium text-white dark:text-white" htmlFor="email">Email Address:</label>
           <input type="email" id="email" class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required value={email} onChange={(e) => setEmail(e.target.value)} />
-          <label for='phone' htmlFor="phone" class="block mb-2 text-sm font-medium text-white dark:text-white">Phone Number:</label>
+          <label htmlFor="phone" class="block mb-2 text-sm font-medium text-white dark:text-white">Phone Number:</label>
           <input type="text" id="phone" class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={phone} onChange={(e) => setPhone(e.target.value)} required />
         </div>
         <h2 class="block mb-2 text-xl font-medium text-white dark:text-white">Education</h2>

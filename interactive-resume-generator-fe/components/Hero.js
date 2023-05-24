@@ -7,7 +7,7 @@ export default function Hero() {
             <header className='hero__header'>
                 <h1>Test User</h1>
                 <h2>Test Title</h2>
-                <Link href='/components/ResumeForm'>
+                <Link href='/ResumeForm'>
                     Create Resume
                 </Link>
                 <p>Scroll Down</p>

@@ -38,17 +38,39 @@ export default function ResumeForm() {
     setSkills([...skills, '']);
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const resume = {
+  //     name,
+  //     email,
+  //     phone,
+  //     education,
+  //     experience,
+  //     skills,
+  //   };
+  //   console.log(resume); // Replace with your logic to save or process the resume data
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const resume = {
-      name,
-      email,
-      phone,
-      education,
-      experience,
-      skills,
+    const resume = new FormData();
+    const data = {
+      "name": name,
+      "email": name,
+      "phone": name,
+      "education": name,
+      "experience": name,
+      "skills": name
     };
-    console.log(resume); // Replace with your logic to save or process the resume data
+    resume.append('name', "Ethan's Resume")
+    resume.append('data', JSON.stringify(data))
+    resume.append('format', JSON.stringify({"things":"stuff"}))
+    const response = await fetch('http://localhost:8000/api/v1/resumes/create/', {
+        method: 'POST',
+        header: {'Content-Type': "multipart/form-data"},
+        body: resume
+      })
+    console.log(await response.json())
   };
 
   return (

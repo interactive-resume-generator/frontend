@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Image from "next/image";
 
 export default function PortfolioSection({ resources, loading }) {
   const sectionRef = useRef(null);
@@ -50,6 +51,14 @@ export default function PortfolioSection({ resources, loading }) {
                           <p>{edu.year}</p>
                         </div>
                       ))}
+                      <Image
+                        className="ground-img"
+                        src="/grounds/grassyground_transparent.png"
+                        alt="grassy ground"
+                        quality={100}
+                        width={1000}
+                        height={1000}
+                      />
                     </div>
                   );
                 } else if (resource.experience) {
@@ -63,6 +72,14 @@ export default function PortfolioSection({ resources, loading }) {
                           <p>{exp.duration}</p>
                         </div>
                       ))}
+                      <Image
+                        className="ground-img"
+                        src="/grounds/grassyground_transparent.png"
+                        alt="grassy ground"
+                        quality={100}
+                        width={1000}
+                        height={1000}
+                      />
                     </div>
                   );
                 } else if (resource.skills) {
@@ -72,6 +89,14 @@ export default function PortfolioSection({ resources, loading }) {
                       {resource.skills.map((skill, skillIndex) => (
                         <p key={skillIndex}>{skill}</p>
                       ))}
+                      <Image
+                        className="ground-img"
+                        src="/grounds/grassyground_transparent.png"
+                        alt="grassy ground"
+                        quality={100}
+                        width={1000}
+                        height={1000}
+                      />
                     </div>
                   );
                 }

@@ -87,6 +87,7 @@ body {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-gap: 40px;
   grid-auto-rows: 100px;
+  position: relative;
 }
 
 .scroll-section h3 {
@@ -98,6 +99,12 @@ body {
   align-self: flex-start;
   justify-self: center;
   margin-top: 5%;
+}
+
+.scroll-section img {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 .scroll-section>div {

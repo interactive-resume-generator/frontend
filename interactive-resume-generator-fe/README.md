@@ -65,3 +65,7 @@ Flowbite-React
 $ npm install flowbite flowbite-react --save
 ```
 
+react-icons
+```
+$ npm install react-icons
+```

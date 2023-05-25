@@ -13,8 +13,8 @@ body,
 }
 
 :root {
-    --backgroundColor: #292929;
-    --primaryColor: #0aa1ff;
+    --backgroundColor: #858585;
+    --primaryColor: #003758;
     --primaryTextColor: #e6e6e6;
 
     --headlineBig: clamp(5rem, 9.9vw, 15rem);
@@ -25,21 +25,6 @@ body,
 
 body {
   background-color: var(--backgroundColor);
-}
-
-.clouds-bottom {
-    bottom: 0px;
-    width: 100%;
-}
-
-.clouds-left {
-    left: 0;
-    width: 20%;
-}
-
-.clouds-right {
-    right: 0;
-    width: 20%;
 }
 
 
@@ -61,28 +46,11 @@ body {
 
 .hero__header h2 {
   letter-spacing: var(--headlineSmall);
-  font-size: var(--headlineSmall);
+  font-size: var(--headlineMedium);
   text-transform: uppercase;
   color: var(--primaryColor);
 }
 
-.mountain-3,
-.mountain-2,
-.mountain-1 {
-    width: 100%;
-    bottom: 0;
-    z-index: 3;
-}
-
-.mountain-1 {
-    bottom: 40px;
-    z-index: 1;
-}
-
-.mountain-2 {
-    bottom: 20px;
-    z-index: 2;
-}
 
 .parallax-outer {
     overflow: hidden;
@@ -115,9 +83,10 @@ body {
 .scroll-section {
   height: 100vh;
   width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 40px;
+  grid-auto-rows: 100px;
 }
 
 .scroll-section h3 {
@@ -125,19 +94,17 @@ body {
   letter-spacing: var(--headlineMedium);
   font-size: var(--headlineMedium);
   text-transform: uppercase;
+  grid-column: span 4;
+  align-self: flex-start;
+  justify-self: center;
+  margin-top: 5%;
 }
 
-.stars {
-    top: -550px;
-    left: 0;
-    width: 100%;
-}
-
-.sun {
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40%;
+.scroll-section>div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer {

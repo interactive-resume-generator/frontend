@@ -20,9 +20,9 @@ export default function Portfolio() {
     { skills: ["testskill", "testskill"] },
   ];
 
-  const response = fetch("http://localhost:8000/api/v1/resumes");
+  // const response = fetch("http://localhost:8000/api/v1/resumes");
 
-  console.log(response.data);
+  // console.log(response.data);
 
   return (
     <>

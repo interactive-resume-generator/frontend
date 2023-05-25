@@ -9,7 +9,7 @@ export default function useResource() {
 
     const { data, error, mutate } = useSWR([apiUrl, tokens], fetchResource);
 
-    async function fetchResource(url) {
+    async function fetchResource() {
 
         if (!tokens) {
             return;
@@ -33,12 +33,26 @@ export default function useResource() {
 
         try {
             const options = config();
-            options.method = "POST",
+            options.method = "POST";
             options.body = JSON.stringify(info);
             await fetch(apiUrl, options);
-            mutate(); // mutate causes complete collection to be refetched
+            await mutate(); // mutate causes complete collection to be refetched
         } catch (err) {
             handleError(err);
+        }
+    }
+
+    async function createResume(data) {
+        let url = apiUrl + '/create'
+
+        try {
+            const options = config()
+            options.method = "POST";
+            options.body = data
+            await fetch(url, options)
+            await mutate();
+        } catch(err) {
+            handleError(err)
         }
     }
 
@@ -87,5 +101,6 @@ export default function useResource() {
         createResource,
         deleteResource,
         updateResource,
+        createResume
     };
 }

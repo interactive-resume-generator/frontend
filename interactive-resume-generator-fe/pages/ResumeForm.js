@@ -1,6 +1,10 @@
 import { useState } from "react";
+import useResource from "hooks/useResources"
 
 export default function ResumeForm() {
+
+  const { createResume } = useResource()
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -58,15 +62,17 @@ export default function ResumeForm() {
     resume.append("name", "Ethan's Resume");
     resume.append("data", JSON.stringify(data));
     resume.append("format", JSON.stringify({ things: "stuff" }));
-    const response = await fetch(
-      "http://localhost:8000/api/v1/resumes/create/",
-      {
-        method: "POST",
-        header: { "Content-Type": "multipart/form-data" },
-        body: resume,
-      }
-    );
-    console.log(await response.json());
+
+    await createResume(resume)
+    // const response = await fetch(
+    //   "http://localhost:8000/api/v1/resumes/create/",
+    //   {
+    //     method: "POST",
+    //     header: { "Content-Type": "multipart/form-data" },
+    //     body: resume,
+    //   }
+    // );
+    // console.log(await response.json());
   };
 
   return (

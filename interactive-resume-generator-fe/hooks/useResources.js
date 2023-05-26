@@ -47,7 +47,6 @@ export default function useResource() {
       options.body = data;
       options.headers = {
         Authorization: "Bearer " + tokens.access,
-        // "Content-Type": "multipart/form-data"
       };
       console.log(url)
       console.log(options)

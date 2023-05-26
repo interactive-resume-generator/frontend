@@ -5,58 +5,6 @@ import useResources from "../hooks/useResources";
 
 export default function Hero() {
 
-  const { createResume } = useResources();
-
-  const handleSubmit = async (e) => {
-    console.log('submit')
-    const resume = new FormData();
-    const testData = {
-      education: [
-        {degree: "BS in CompSci", university: "UCLA", year: "2021"},
-      ],
-      experience: [
-        {
-          company: "Amazon",
-          position: "Intern, Software Engineer",
-          duration: "Jan 2021 - Dec 2021",
-        },
-        {
-          company: "TEKsystems",
-          position: "Help Desk Analyst",
-          duration: "Jan 2020-Dec 2020",
-        },
-        {
-          company: "Best Buy",
-          position: "Geek Squad Consultant",
-          duration: "Jan 2016 - Dec 2019",
-        },
-      ],
-      skills: [
-        "HTML",
-        "CSS",
-        "Javascript",
-        "React.js",
-        "Express",
-        "Node.js",
-        "MongoDB",
-        "VSCode",
-        "REST Frameworks",
-        "ReactStrap",
-        "Next.js",
-        "Python",
-        "Django",
-        "C#",
-        "PostgreSQL",
-        "API",
-      ]
-    };
-    resume.append("name", "Ethan's Resume");
-    resume.append("data", JSON.stringify(testData));
-    resume.append("format", JSON.stringify({things: "stuff"}));
-
-    await createResume(resume);
-  }
-
   return (
     <>
       <header className="hero__header">

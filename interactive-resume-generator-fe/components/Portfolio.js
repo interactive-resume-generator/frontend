@@ -8,71 +8,61 @@ export default function Portfolio() {
 
   // console.log(user);
 
-  const testData = [
-    {
-      education: [
-        { degree: "BS in CompSci", university: "UCLA", year: "2021" },
-      ],
-    },
-    {
-      experience: [
-        {
-          company: "Amazon",
-          position: "Intern, Software Engineer",
-          duration: "Jan 2021 - Dec 2021",
-        },
-        {
-          company: "TEKsystems",
-          position: "Help Desk Analyst",
-          duration: "Jan 2020-Dec 2020",
-        },
-        {
-          company: "Best Buy",
-          position: "Geek Squad Consultant",
-          duration: "Jan 2016 - Dec 2019",
-        },
-      ],
-    },
-    {
-      skills: [
-        "HTML",
-        "CSS",
-        "Javascript",
-        "React.js",
-        "Express",
-        "Node.js",
-        "MongoDB",
-        "VSCode",
-        "REST Frameworks",
-        "ReactStrap",
-        "Next.js",
-        "Python",
-        "Django",
-        "C#",
-        "PostgreSQL",
-        "API",
-      ],
-    },
-  ];
+  const testData = {
+    education: [{ degree: "BS in CompSci", university: "UCLA", year: "2021" }],
+    experience: [
+      {
+        company: "Amazon",
+        position: "Intern, Software Engineer",
+        duration: "Jan 2021 - Dec 2021",
+      },
+      {
+        company: "TEKsystems",
+        position: "Help Desk Analyst",
+        duration: "Jan 2020-Dec 2020",
+      },
+      {
+        company: "Best Buy",
+        position: "Geek Squad Consultant",
+        duration: "Jan 2016 - Dec 2019",
+      },
+    ],
+
+    skills: [
+      "HTML",
+      "CSS",
+      "Javascript",
+      "React.js",
+      "Express",
+      "Node.js",
+      "MongoDB",
+      "VSCode",
+      "REST Frameworks",
+      "ReactStrap",
+      "Next.js",
+      "Python",
+      "Django",
+      "C#",
+      "PostgreSQL",
+      "API",
+    ],
+  };
 
   // const response = fetch("http://localhost:8000/api/v1/resumes");
 
   // console.log(response.data);
 
-  console.log(resources);
+  console.log(user && !loading ? resources[0].data : null);
 
   return (
     <>
-      {user ? (
+      {user && !loading ? (
         <PortfolioSection
-          resources={resources || []}
+          resource={resources[0].data || []}
           loading={loading}
         ></PortfolioSection>
       ) : (
-        <PortfolioSection
-          resources={testData}
-          loading={loading}
-        ></PortfolioSection>
+        <PortfolioSection resources={null} loading={loading}></PortfolioSection>
       )}
     </>
   );

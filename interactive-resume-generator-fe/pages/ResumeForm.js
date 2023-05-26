@@ -7,7 +7,7 @@ export default function ResumeForm() {
 
   const { user, login } = useAuth();
 
-  console.log(user)
+  console.log(user);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -63,7 +63,7 @@ export default function ResumeForm() {
       experience: experience,
       skills: skills,
     };
-    resume.append("name", "Ethan's Resume");
+    resume.append("name", user.username);
     resume.append("data", JSON.stringify(data));
     resume.append("format", JSON.stringify({ things: "stuff" }));
 

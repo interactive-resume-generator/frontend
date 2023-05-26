@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
 import { useIsomorphicLayoutEffect } from "@/helpers/isomorphicEffect";
 
-export default function PortfolioSection({ resources, loading }) {
+export default function PortfolioSection({ resource, loading }) {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
   const boxRef = useRef();
@@ -108,89 +108,70 @@ export default function PortfolioSection({ resources, loading }) {
 
   return (
     <>
-      {!loading && resources ? (
+      {!loading && resource ? (
         <section className="scroll-section-outer">
           <div ref={triggerRef}>
             <div ref={sectionRef} className="scroll-section-inner">
-              {resources.map((resource, index) => {
-                if (resource.education) {
+              <div key={0} className="scroll-section" ref={eduRef}>
+                <h3>Education</h3>
+                {resource.education.map((edu, index) => {
                   return (
-                    <div key={index} className="scroll-section" ref={eduRef}>
-                      <h3>Education</h3>
-                      {resource.education.map((edu, eduIndex) => (
-                        <div
-                          key={eduIndex}
-                          className="box edu-box"
-                          ref={boxRef}
-                        >
-                          <p>{edu.degree}</p>
-                          <p>{edu.university}</p>
-                          <p>{edu.year}</p>
-                        </div>
-                      ))}
-                      <Image
-                        className="ground-img"
-                        src="/grounds/grassyground_transparency.png"
-                        alt="grassy ground"
-                        quality={100}
-                        width={1000}
-                        height={1000}
-                      />
+                    <div key={index} className="box edu-box" ref={boxRef}>
+                      <p>{edu.degree}</p>
+                      <p>{edu.university}</p>
+                      <p>{edu.year}</p>
                     </div>
                   );
-                } else if (resource.experience) {
+                })}
+                <Image
+                  className="ground-img"
+                  src="/grounds/grassyground_transparency.png"
+                  alt="grassy ground"
+                  quality={100}
+                  width={1000}
+                  height={1000}
+                />
+              </div>
+
+              <div key={1} className="scroll-section" ref={expRef}>
+                <h3>Experience</h3>
+                {resource.experience.map((exp, index) => {
                   return (
-                    <div key={index} className="scroll-section" ref={expRef}>
-                      <h3>Experience</h3>
-                      {resource.experience.map((exp, expIndex) => (
-                        <div
-                          key={expIndex}
-                          ref={boxRef}
-                          className="box exp-box"
-                        >
-                          <p>{exp.company}</p>
-                          <p>{exp.position}</p>
-                          <p>{exp.duration}</p>
-                        </div>
-                      ))}
-                      <Image
-                        className="ground-img"
-                        src="/grounds/grassyground_transparency.png"
-                        alt="grassy ground"
-                        quality={100}
-                        width={1000}
-                        height={1000}
-                      />
+                    <div key={index} className="box exp-box" ref={boxRef}>
+                      <p>{exp.company}</p>
+                      <p>{exp.position}</p>
+                      <p>{exp.duration}</p>
                     </div>
                   );
-                } else if (resource.skills) {
+                })}
+                <Image
+                  className="ground-img"
+                  src="/grounds/grassyground_transparency.png"
+                  alt="grassy ground"
+                  quality={100}
+                  width={1000}
+                  height={1000}
+                />
+              </div>
+
+              <div key={1} className="scroll-section" ref={skillRef}>
+                <h3>Experience</h3>
+                {resource.skills.map((skill, index) => {
                   return (
-                    <>
-                      <div
-                        key={index}
-                        className="scroll-section"
-                        ref={skillRef}
-                      >
-                        <h3>Skills</h3>
-                        {resource.skills.map((skill, skillIndex) => (
-                          <div className="box skill-box" ref={boxRef}>
-                            <p key={skillIndex}>{skill}</p>
-                          </div>
-                        ))}
-                        <Image
-                          className="ground-img"
-                          src="/grounds/grassyground_transparency.png"
-                          alt="grassy ground"
-                          quality={100}
-                          width={1000}
-                          height={1000}
-                        />
-                      </div>
-                    </>
+                    <div key={index} className="box skill-box" ref={boxRef}>
+                      <p>{skill}</p>
+                    </div>
                   );
-                }
-                // return null; // Return null for unrecognized data structure
-              })}
+                })}
+                <Image
+                  className="ground-img"
+                  src="/grounds/grassyground_transparency.png"
+                  alt="grassy ground"
+                  quality={100}
+                  width={1000}
+                  height={1000}
+                />
+              </div>
             </div>
           </div>
         </section>

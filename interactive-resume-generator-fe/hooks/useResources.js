@@ -39,7 +39,7 @@ export default function useResource() {
   }
 
   async function createResume(data) {
-    let url = apiUrl + "create";
+    let url = apiUrl + "create/";
 
     try {
       const options = {};
@@ -47,8 +47,9 @@ export default function useResource() {
       options.body = data;
       options.headers = {
         Authorization: "Bearer " + tokens.access,
-        "Content-Type": "multipart/form-data",
       };
+      console.log(url)
+      console.log(options)
       await fetch(url, options);
       await mutate();
     } catch (err) {

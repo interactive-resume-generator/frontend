@@ -155,7 +155,7 @@ export default function PortfolioSection({ resource, loading }) {
               </div>
 
               <div key={1} className="scroll-section" ref={skillRef}>
-                <h3>Experience</h3>
+                <h3>Skills</h3>
                 {resource.skills.map((skill, index) => {
                   return (
                     <div key={index} className="box skill-box" ref={boxRef}>

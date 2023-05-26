@@ -103,7 +103,6 @@ export default function ResumeForm() {
           <label
             htmlFor="email"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            htmlFor="email"
           >
             Email Address:
           </label>
@@ -117,7 +116,6 @@ export default function ResumeForm() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <label
-            htmlFor="phone"
             htmlFor="phone"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >

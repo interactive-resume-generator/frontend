@@ -11,7 +11,7 @@ export default function Footer() {
     <>
       {user && !loading ? (
         <footer className="footer">
-          <span>Let's Connect!</span>
+          <span>Let&apos;s Connect!</span>
           <br></br>
           <div className="flex items-center justify-between max-w-[400px] m-auto py-4">
             <div className="rounded-full shadow-lg shadow-gray-600 p-6 m-6 cursor-pointer hover:scale-110 ease-in duration-300 social-bubble">

@@ -48,15 +48,11 @@ export default function Portfolio() {
     ],
   };
 
-  // const response = fetch("http://localhost:8000/api/v1/resumes");
-
-  // console.log(response.data);
-
-  console.log(user && !loading ? resources[0].data : null);
+  console.log(resources);
 
   return (
     <>
-      {user && !loading ? (
+      {user && !loading && resources.length > 1 ? (
         <PortfolioSection
           resource={resources[0].data || []}
           loading={loading}

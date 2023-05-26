@@ -81,14 +81,14 @@ export default function ResumeForm() {
 
   return (
     <div class="m-5">
-      <h1 class="block mb-2 text-4xl font-medium text-white dark:text-white">
+      <h1 class="block mb-2 text-4xl font-medium text-gray-900 dark:text-white">
         Resume Generator
       </h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
           <label
             htmlFor="name"
-            class="block mb-2 text-sm font-medium text-white dark:text-white"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Full Name:
           </label>
@@ -102,7 +102,7 @@ export default function ResumeForm() {
           />
           <label
             for="email"
-            class="block mb-2 text-sm font-medium text-white dark:text-white"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             htmlFor="email"
           >
             Email Address:
@@ -119,7 +119,7 @@ export default function ResumeForm() {
           <label
             for="phone"
             htmlFor="phone"
-            class="block mb-2 text-sm font-medium text-white dark:text-white"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Phone Number:
           </label>
@@ -132,14 +132,14 @@ export default function ResumeForm() {
             required
           />
         </div>
-        <h2 class="block mb-2 text-xl font-medium text-white dark:text-white">
+        <h2 class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">
           Education
         </h2>
         {education.map((edu, index) => (
           <div key={index}>
             <label
               htmlFor={`degree-${index}`}
-              class="block mb-2 text-sm font-medium text-white dark:text-white"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Degree:
             </label>
@@ -156,7 +156,7 @@ export default function ResumeForm() {
 
             <label
               htmlFor={`university-${index}`}
-              class="block mb-2 text-sm font-medium text-white dark:text-white"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               University:
             </label>
@@ -173,7 +173,7 @@ export default function ResumeForm() {
 
             <label
               htmlFor={`year-${index}`}
-              class="block mb-2 text-sm font-medium text-white dark:text-white"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Year of Graduation:
             </label>
@@ -197,14 +197,14 @@ export default function ResumeForm() {
           Add Education
         </button>
 
-        <h2 class="block mb-2 text-xl font-medium text-white dark:text-white mt-5">
+        <h2 class="block mb-2 text-xl font-medium text-gray-900 dark:text-white mt-5">
           Work Experience
         </h2>
         {experience.map((exp, index) => (
           <div key={index}>
             <label
               htmlFor={`company-${index}`}
-              class="block mb-2 text-sm font-medium text-white dark:text-white"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Company Name:
             </label>
@@ -221,7 +221,7 @@ export default function ResumeForm() {
 
             <label
               htmlFor={`position-${index}`}
-              class="block mb-2 text-sm font-medium text-white dark:text-white"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Position:
             </label>
@@ -238,7 +238,7 @@ export default function ResumeForm() {
 
             <label
               htmlFor={`duration-${index}`}
-              class="block mb-2 text-sm font-medium text-white dark:text-white"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Duration of Employment:
             </label>
@@ -257,12 +257,12 @@ export default function ResumeForm() {
         <button
           type="button"
           onClick={handleAddExperience}
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-gray-900 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Add Experience
         </button>
 
-        <h2 class="block mb-2 text-xl font-medium text-white dark:text-white mt-5">
+        <h2 class="block mb-2 text-xl font-medium text-gray-900 dark:text-white mt-5">
           Skills
         </h2>
         {skills.map((skill, index) => (
@@ -279,14 +279,14 @@ export default function ResumeForm() {
         <button
           type="button"
           onClick={handleAddSkill}
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-gray-900 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Add Skill
         </button>
         <div class="text-center">
           <button
             type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="text-gray-900 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Generate Resume
           </button>

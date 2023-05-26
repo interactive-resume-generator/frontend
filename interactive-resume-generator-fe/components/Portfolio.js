@@ -6,23 +6,60 @@ export default function Portfolio() {
   const { user } = useAuth();
   const { resources, loading } = useResource();
 
+  // console.log(user);
+
   const testData = [
     {
       education: [
-        { degree: "testdeg", university: "testuni", year: "testyear" },
+        { degree: "BS in CompSci", university: "UCLA", year: "2021" },
       ],
     },
     {
       experience: [
-        { company: "testcomp", position: "testpos", duration: "testduration" },
+        {
+          company: "Amazon",
+          position: "Intern, Software Engineer",
+          duration: "Jan 2021 - Dec 2021",
+        },
+        {
+          company: "TEKsystems",
+          position: "Help Desk Analyst",
+          duration: "Jan 2020-Dec 2020",
+        },
+        {
+          company: "Best Buy",
+          position: "Geek Squad Consultant",
+          duration: "Jan 2016 - Dec 2019",
+        },
       ],
     },
-    { skills: ["testskill", "testskill"] },
+    {
+      skills: [
+        "HTML",
+        "CSS",
+        "Javascript",
+        "React.js",
+        "Express",
+        "Node.js",
+        "MongoDB",
+        "VSCode",
+        "REST Frameworks",
+        "ReactStrap",
+        "Next.js",
+        "Python",
+        "Django",
+        "C#",
+        "PostgreSQL",
+        "API",
+      ],
+    },
   ];
 
   // const response = fetch("http://localhost:8000/api/v1/resumes");
 
   // console.log(response.data);
+
+  console.log(resources);
 
   return (
     <>

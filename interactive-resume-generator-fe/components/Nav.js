@@ -20,7 +20,7 @@ export default function Nav() {
 
   return (
     <>
-      <Navbar fluid={true}>
+      <Navbar fluid={true} className="nav">
         <div className="flex md:order-2">
           {user ? (
             <>

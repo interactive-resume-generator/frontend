@@ -1,13 +1,16 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useLayoutEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
+import { useIsomorphicLayoutEffect } from "@/helpers/isomorphicEffect";
 
 export default function PortfolioSection({ resources, loading }) {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
-
-  // console.log(resources[0]);
+  const boxRef = useRef();
+  const eduRef = useRef();
+  const expRef = useRef();
+  const skillRef = useRef();
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +26,7 @@ export default function PortfolioSection({ resources, loading }) {
           trigger: triggerRef.current,
           start: "top top",
           end: "2000 top",
-          scrub: 0.6,
+          scrub: true,
           pin: true,
         },
       }
@@ -31,21 +34,95 @@ export default function PortfolioSection({ resources, loading }) {
     return () => {
       pin.kill();
     };
-  }, [resources]);
+  }, []);
+
+  useIsomorphicLayoutEffect(() => {
+    const ctx = gsap.context((self) => {
+      const boxes = self.selector(".edu-box");
+      boxes.forEach((box) => {
+        gsap.fromTo(
+          box,
+          { x: eduRef.current.offsetLeft, y: eduRef.current.offsetTop },
+          {
+            x: -300,
+            y: -100,
+            scrollTrigger: {
+              trigger: box,
+              start: `${eduRef.current.offsetTop - 600} bottom`,
+              scrub: 1,
+            },
+          }
+        );
+      });
+    }, eduRef);
+    return () => ctx.revert();
+  }, []);
+
+  useIsomorphicLayoutEffect(() => {
+    const ctx = gsap.context((self) => {
+      const boxes = self.selector(".exp-box");
+      boxes.forEach((box) => {
+        gsap.fromTo(
+          box,
+          { x: expRef.current.offsetLeft, y: expRef.current.offsetTop },
+          {
+            x: -40,
+            y: -100,
+            scrollTrigger: {
+              trigger: box,
+              start: `${expRef.current.offsetTop} 80%`,
+              scrub: 4,
+            },
+          }
+        );
+      });
+    }, expRef);
+    return () => ctx.revert();
+  }, []);
+
+  useIsomorphicLayoutEffect(() => {
+    const ctx = gsap.context((self) => {
+      const boxes = self.selector(".skill-box");
+      boxes.forEach((box) => {
+        gsap.fromTo(
+          box,
+          {
+            x: 400,
+            y: 400,
+          },
+          {
+            x: 0,
+            y: -40,
+            scrollTrigger: {
+              trigger: box,
+              start: `${skillRef.current.offsetTop} 40%`,
+              scrub: 4,
+              // markers: true,
+            },
+          }
+        );
+      });
+    }, skillRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
     <>
-      {!loading ? (
+      {!loading && resources ? (
         <section className="scroll-section-outer">
           <div ref={triggerRef}>
             <div ref={sectionRef} className="scroll-section-inner">
               {resources.map((resource, index) => {
                 if (resource.education) {
                   return (
-                    <div key={index} className="scroll-section">
+                    <div key={index} className="scroll-section" ref={eduRef}>
                       <h3>Education</h3>
                       {resource.education.map((edu, eduIndex) => (
-                        <div key={eduIndex}>
+                        <div
+                          key={eduIndex}
+                          className="box edu-box"
+                          ref={boxRef}
+                        >
                           <p>{edu.degree}</p>
                           <p>{edu.university}</p>
                           <p>{edu.year}</p>
@@ -53,7 +130,7 @@ export default function PortfolioSection({ resources, loading }) {
                       ))}
                       <Image
                         className="ground-img"
-                        src="/grounds/grassyground_transparent.png"
+                        src="/grounds/grassyground_transparency.png"
                         alt="grassy ground"
                         quality={100}
                         width={1000}
@@ -63,10 +140,14 @@ export default function PortfolioSection({ resources, loading }) {
                   );
                 } else if (resource.experience) {
                   return (
-                    <div key={index} className="scroll-section">
+                    <div key={index} className="scroll-section" ref={expRef}>
                       <h3>Experience</h3>
                       {resource.experience.map((exp, expIndex) => (
-                        <div key={expIndex}>
+                        <div
+                          key={expIndex}
+                          ref={boxRef}
+                          className="box exp-box"
+                        >
                           <p>{exp.company}</p>
                           <p>{exp.position}</p>
                           <p>{exp.duration}</p>
@@ -74,7 +155,7 @@ export default function PortfolioSection({ resources, loading }) {
                       ))}
                       <Image
                         className="ground-img"
-                        src="/grounds/grassyground_transparent.png"
+                        src="/grounds/grassyground_transparency.png"
                         alt="grassy ground"
                         quality={100}
                         width={1000}
@@ -84,23 +165,31 @@ export default function PortfolioSection({ resources, loading }) {
                   );
                 } else if (resource.skills) {
                   return (
-                    <div key={index} className="scroll-section">
-                      <h3>Skills</h3>
-                      {resource.skills.map((skill, skillIndex) => (
-                        <p key={skillIndex}>{skill}</p>
-                      ))}
-                      <Image
-                        className="ground-img"
-                        src="/grounds/grassyground_transparent.png"
-                        alt="grassy ground"
-                        quality={100}
-                        width={1000}
-                        height={1000}
-                      />
-                    </div>
+                    <>
+                      <div
+                        key={index}
+                        className="scroll-section"
+                        ref={skillRef}
+                      >
+                        <h3>Skills</h3>
+                        {resource.skills.map((skill, skillIndex) => (
+                          <div className="box skill-box" ref={boxRef}>
+                            <p key={skillIndex}>{skill}</p>
+                          </div>
+                        ))}
+                        <Image
+                          className="ground-img"
+                          src="/grounds/grassyground_transparency.png"
+                          alt="grassy ground"
+                          quality={100}
+                          width={1000}
+                          height={1000}
+                        />
+                      </div>
+                    </>
                   );
                 }
-                return null; // Return null for unrecognized data structure
+                // return null; // Return null for unrecognized data structure
               })}
             </div>
           </div>

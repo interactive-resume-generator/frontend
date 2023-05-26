@@ -1,9 +1,13 @@
 import { useState } from "react";
-import useResource from "hooks/useResources"
+import useResource from "hooks/useResources";
+import { useAuth } from "@/contexts/auth";
 
 export default function ResumeForm() {
+  const { createResume } = useResource();
 
-  const { createResume } = useResource()
+  const { user, login } = useAuth();
+
+  console.log(user)
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -63,7 +67,7 @@ export default function ResumeForm() {
     resume.append("data", JSON.stringify(data));
     resume.append("format", JSON.stringify({ things: "stuff" }));
 
-    await createResume(resume)
+    await createResume(resume);
     // const response = await fetch(
     //   "http://localhost:8000/api/v1/resumes/create/",
     //   {

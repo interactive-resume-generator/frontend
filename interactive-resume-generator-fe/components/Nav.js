@@ -80,11 +80,10 @@ export default function Nav() {
           )}
         </div>
         <Navbar.Collapse>
-          <Navbar.Link href="/" active={true}>
-            Home
-          </Navbar.Link>
+          <Navbar.Link href="/" active={true}>Home</Navbar.Link>
           <Navbar.Link href="/edit">Edit</Navbar.Link>
           <Navbar.Link href="/portfolio">Portfolio</Navbar.Link>
+          <Navbar.Link href="/ResumeForm">Create</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </>
